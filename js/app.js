@@ -6,11 +6,6 @@ const img = document.getElementById("img");
 
 let sum = 1;
 let AudioList;
-fetch("audio.json")
-  .then((response) => response.json())
-  .then((data) => {
-    AudioList = data;
-  });
 
 function stopCurrentSong() {
   const AudioPlaying = new Audio(`Prhiz/${sum}.mp3`);
@@ -20,12 +15,11 @@ function stopCurrentSong() {
 }
 
 function AddMusic(sum) {
-  if (AudioList != null) {
     const AudioPlaying = new Audio(`Prhiz/${sum}.mp3`);
     AudioPlaying.play();
     stopCurrentSong();
     console.log(sum);
-  }
+
 }
 
 console.log(AddMusic(sum));
@@ -35,7 +29,6 @@ btnPlay.addEventListener("click", () => {
 });
 
 btnForward.addEventListener("click", () => {
-  if (AudioList != null) {
     const AudioPlaying = new Audio(`Prhiz/${sum++}.mp3`);
     const h1 = document.getElementById("h1");
     h1.innerHTML = `${sum}/114`;
@@ -43,5 +36,4 @@ btnForward.addEventListener("click", () => {
 
     console.log(sum);
     AudioPlaying.pause();
-  }
 });
